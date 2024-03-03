@@ -11,8 +11,9 @@ import {
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Names from './src/pages/Names';
 
-export default class Doua extends React.Component {
+export default class Duapage extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -46,7 +47,7 @@ export default class Doua extends React.Component {
         },
 
         {
-          name1: 'Children2',
+          name1: 'Hereafter',
           name2: 'الْأَطْفَال',
           chevron: true,
           Doua1: '',
@@ -56,7 +57,7 @@ export default class Doua extends React.Component {
         },
 
         {
-          name1: 'Children4',
+          name1: 'Mercy',
           name2: 'الاطفال',
           chevron: true,
           Doua1: '',
@@ -65,7 +66,7 @@ export default class Doua extends React.Component {
           Doua4: '',
         },
         {
-          name1: 'Children',
+          name1: 'Patience',
           name2: 'الْأَطْفَال',
           chevron: true,
           Doua1:
@@ -78,8 +79,8 @@ export default class Doua extends React.Component {
             'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
         },
         {
-          name1: 'Guidance',
-          name2: 'الإِرْشَادِ',
+          name1: 'Sleeping',
+
           chevron: true,
           Doua1:
             'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (١) ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ (٢) ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (٣) مَـٰلِكِ يَوْمِ ٱلدِّينِ (٤) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥) ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ (٦) صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ (٧)',
@@ -90,121 +91,6 @@ export default class Doua extends React.Component {
             'رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَـٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ (١٩٣) رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَـٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ (١٩٤)',
           Doua4:
             'يَتَرَقَّبُ ۖ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّـٰلِمِينَ (٢١)',
-        },
-
-        {
-          name1: 'Children2',
-          name2: 'الْأَطْفَال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-
-        {
-          name1: 'Children4',
-          name2: 'الاطفال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-        {
-          name1: 'Children2',
-          name2: 'الْأَطْفَال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-
-        {
-          name1: 'Children4',
-          name2: 'الاطفال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-        {
-          name1: 'Children2',
-          name2: 'الْأَطْفَال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-
-        {
-          name1: 'Children4',
-          name2: 'الاطفال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-        {
-          name1: 'Children2',
-          name2: 'الْأَطْفَال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-
-        {
-          name1: 'Children4',
-          name2: 'الاطفال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-        {
-          name1: 'Children2',
-          name2: 'الْأَطْفَال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-
-        {
-          name1: 'Children4',
-          name2: 'الاطفال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-        {
-          name1: 'Children2',
-          name2: 'الْأَطْفَال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
-        },
-
-        {
-          name1: 'Children4',
-          name2: 'الاطفال',
-          chevron: true,
-          Doua1: '',
-          Doua2: '',
-          Doua3: '',
-          Doua4: '',
         },
       ],
     };
@@ -218,180 +104,116 @@ export default class Doua extends React.Component {
     Edit[index].chevron = false;
     this.setState({star: Edit});
   }
-
   render() {
     return (
       <>
         <ImageBackground
-          source={require('../imgs/Mosque.jpg')}
-          style={{flex: 1, padding: 5}}>
+          source={require('../backgrounds/yy.jpg')}
+          style={{flex: 1}}>
           <View
             style={{
+              flexDirection: 'row',
+              justifyContent: 'space-around',
               alignItems: 'center',
-              height: '10%',
-              backgroundColor: '#fff',
-              width: '80%',
               alignSelf: 'center',
-              borderRadius: 30,
-              justifyContent: 'center',
+              width: '90%',
+              backgroundColor: '#a29c9a',
+              borderRadius: 25,
+              paddingVertical: 10,
+              marginTop: 10,
             }}>
-            <Text style={{fontSize: 20, color: '#000', fontWeight: '600'}}>
-              الدعاء
-            </Text>
+            <TouchableOpacity>
+              <AntDesign name="arrowleft" size={30} color="#4f5051" />
+            </TouchableOpacity>
+            <View
+              style={{
+                height: '100%',
+                width: '55%',
+                //backgroundColor: '#000',
+                alignItems: 'flex-start',
+              }}>
+              <Text
+                style={{
+                  fontSize: 25,
+                  fontWeight: '800',
+                  color: '#4f5051',
+                  marginHorizontal: 20,
+                }}>
+                الدعاء
+              </Text>
+            </View>
           </View>
-
-          <View style={style.DataView}>
+          {/**----------------------------- */}
+          <View style={style.NamesView}>
             <ScrollView>
               <View>
                 {this.state.array.map((item, index) => (
                   <>
-                    <View>
-                      <TouchableOpacity
+                    <TouchableOpacity
+                      style={{
+                        flexDirection: 'row',
+
+                        backgroundColor: '#c0bab8',
+                        justifyContent: 'space-around',
+                        alignItems: 'center',
+                        borderTopRightRadius: 30,
+                        borderBottomLeftRadius: 30,
+                        borderRadius: 5,
+                        padding: 15,
+                        marginVertical: 3,
+                      }}
+                      onPress={() => {
+                        this.change(index);
+                      }}>
+                      <Text
                         style={{
-                          //height: '12%',
-                          width: '100%',
-                          backgroundColor: '#000',
-                          borderRadius: 20,
-
-                          flexDirection: 'row',
-                          alignItems: 'center',
-                          marginBottom: 10,
-                        }}
-                        onPress={() => {
-                          this.change(index);
+                          fontSize: 20,
+                          color: '#fff',
+                          fontWeight: '800',
                         }}>
+                        {item.name1}
+                      </Text>
+                    </TouchableOpacity>
+                    {item.chevron ? null : (
+                      <View>
                         <View
                           style={{
-                            //height: '70%',
-                            width: '20%',
-                            backgroundColor: '#fff',
-                            borderRadius: 10,
-                            margin: 10,
+                            width: '100%',
+                            borderRadius: 20,
+                            backgroundColor: '#989290',
+                            alignItems: 'center',
+                            padding: 20,
+                            marginBottom: 3,
                           }}>
-                          <Image
-                            source={require('../imgs/icon.jpg')}
+                          <Text
                             style={{
-                              resizeMode: 'contain',
-                              //height: '100%',
-                              width: '100%',
-                              borderRadius: 20,
-                            }}
-                          />
+                              fontSize: 20,
+                              fontWeight: '600',
+                              color: '#fff',
+                            }}>
+                            {item.Doua1}
+                          </Text>
                         </View>
-                        <Text
-                          style={{
-                            fontSize: 20,
-                            fontWeight: '600',
-                            color: '#fff',
-                          }}>
-                          {item.name1}
-                        </Text>
                         <View
                           style={{
-                            //  height: '100%',
-                            width: '25%',
-                            // backgroundColor: '#fff',
-                          }}></View>
-                        <Text
-                          style={{
-                            fontSize: 20,
-                            fontWeight: '600',
-                            color: '#fff',
+                            //width: '100%',
+                            borderRadius: 20,
+                            backgroundColor: '#989290',
+                            alignItems: 'center',
+                            padding: 20,
+                            marginBottom: 5,
                           }}>
-                          {item.name2}
-                        </Text>
-                        {item.chevron ? (
-                          <Entypo
-                            name="chevron-small-right"
-                            size={40}
-                            color={'#fff'}
-                          />
-                        ) : (
-                          <Entypo
-                            name="chevron-small-down"
-                            size={40}
-                            color={'#fff'}
-                          />
-                        )}
-                      </TouchableOpacity>
-
-                      {item.chevron ? null : (
-                        <View>
-                          <View
+                          <Text
                             style={{
-                              width: '100%',
-                              borderRadius: 20,
-                              backgroundColor: '#999',
-                              alignItems: 'center',
-                              padding: 20,
-                              marginBottom: 10,
+                              fontSize: 20,
+                              fontWeight: '600',
+                              color: '#fff',
                             }}>
-                            <Text
-                              style={{
-                                fontSize: 20,
-                                fontWeight: '600',
-                                color: '#000',
-                              }}>
-                              {item.Doua1}
-                            </Text>
-                          </View>
-                          <View
-                            style={{
-                              //width: '100%',
-                              borderRadius: 20,
-                              backgroundColor: '#999',
-                              alignItems: 'center',
-                              padding: 20,
-                              marginBottom: 10,
-                            }}>
-                            <Text
-                              style={{
-                                fontSize: 20,
-                                fontWeight: '600',
-                                color: '#000',
-                              }}>
-                              {item.Doua2}
-                            </Text>
-                          </View>
-                          <View
-                            style={{
-                              // width: '100%',
-                              borderRadius: 20,
-                              backgroundColor: '#999',
-                              alignItems: 'center',
-                              padding: 20,
-                              marginBottom: 10,
-                            }}>
-                            <Text
-                              style={{
-                                fontSize: 20,
-                                fontWeight: '600',
-                                color: '#000',
-                              }}>
-                              {item.Doua3}
-                            </Text>
-                          </View>
-                          <View
-                            style={{
-                              // width: '100%',
-                              borderRadius: 20,
-                              backgroundColor: '#999',
-                              alignItems: 'center',
-                              padding: 20,
-                              marginBottom: 10,
-                            }}>
-                            <Text
-                              style={{
-                                fontSize: 20,
-                                fontWeight: '600',
-                                color: '#000',
-                              }}>
-                              {item.Doua4}
-                            </Text>
-                          </View>
+                            {item.Doua2}
+                          </Text>
                         </View>
-                      )}
-                    </View>
+                      </View>
+                    )}
                   </>
                 ))}
               </View>
@@ -403,13 +225,21 @@ export default class Doua extends React.Component {
   }
 }
 const style = StyleSheet.create({
-  DataView: {
-    height: '85%',
+  LargeView: {
+    height: '30%',
     width: '100%',
-    backgroundColor: '#fff',
-    marginTop: 10,
-    borderRadius: 20,
+    backgroundColor: '#a29c9a',
+    marginBottom: 10,
+    borderRadius: 15,
     alignItems: 'center',
-    padding: 10,
+    padding: 20,
+    justifyContent: 'space-between',
+  },
+  NamesView: {
+    height: '92%',
+    width: '100%',
+    //backgroundColor: '#fff',
+    borderRadius: 15,
+    padding: 15,
   },
 });
