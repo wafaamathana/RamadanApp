@@ -12,6 +12,7 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default class HomePage extends React.Component {
+  
   constructor() {
     super();
     this.state = {
