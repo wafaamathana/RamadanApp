@@ -9,15 +9,13 @@ import {
   ImageBackground,
   TextInput,
 } from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
+import Start_page from './src/pages/Start_page';
 
-import Doua from './src/pages/Doua';
 export default class App extends React.Component {
   render() {
     return (
       <>
-        <Doua />
+        <Start_page />
       </>
     );
   }
