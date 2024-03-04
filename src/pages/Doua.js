@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default class Doua extends React.Component {
   
@@ -242,36 +241,7 @@ export default class Doua extends React.Component {
               الدعاء
             </Text>
           </View>
-          <View style={{
-                    alignItems: 'center',
-                    alignSelf:"center",
-                  justifyContent:"space-between",
-                  flexDirection:"row",
-                  width: 300,
-                  paddingHorizontal: 10,
-marginTop:10,
-                  borderRadius: 20,
-                  backgroundColor: '#66605E',
-          }}>
-                    <TextInput
-                      style={{
-                        // backgroundColor: '#100',
-                        // height: 50,
-                        borderRadius: 20,
 
-                          padding: 10,
-                          width:"80%",
-                        // marginTop: 10,
-                        fontSize:20,
-                        color:"#fff"
-                        
-                      }}
-                      keyboardType="email-address"
-                      />
-  
-                  
-                      <FontAwesome name="search" size={20} color={'#fff'} />
-                   </View>
           <View style={style.DataView}>
             <ScrollView>
               <View>
