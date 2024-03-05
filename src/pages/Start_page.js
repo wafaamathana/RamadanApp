@@ -28,7 +28,7 @@ export default class Start_page extends React.Component {
       count: 0,
       Text1: 'لا اله الا الله',
       modalinsidesipha: false,
-
+      TextModalDoua: false,
       data: [
         {
           img: require('../backgrounds/moshaf.png'),
@@ -418,16 +418,22 @@ export default class Start_page extends React.Component {
   }
   makeSearchDoua = searchText => {
     let list = this.state.arrayDoua;
-
+    let count = 0;
     for (let i = 0; i < list.length; i++) {
       if (list[i].name1.toUpperCase().includes(searchText.toUpperCase())) {
         list[i].Bool = true;
       } else {
         list[i].Bool = false;
+        count++;
       }
     }
-
+    if (count == list.length) {
+      this.state.TextModalDoua = true;
+    } else if (count != list.length) {
+      this.state.TextModalDoua = false;
+    }
     this.setState({arrayDoua: list});
+     count=0
   };
   makeSearchQuran = searchText => {
     let list = this.state.QuranPage;
@@ -468,7 +474,6 @@ export default class Start_page extends React.Component {
 
     this.setState({array2: list});
   };
-
   makeSearchExplor = searchText => {
     let list = this.state.ExplorBox;
 
@@ -883,6 +888,7 @@ export default class Start_page extends React.Component {
               </View>
             </ImageBackground>
             {/**مودل الدعاء */}
+
             <Modal
               onRequestClose={() => {
                 this.setState({modelDoua: false});
@@ -968,7 +974,14 @@ export default class Start_page extends React.Component {
                   <View style={style.NamesView}>
                     <ScrollView>
                       <View>
-                        {this.state.arrayDoua.map((item, index) =>
+                        {this.state.TextModalDoua?(
+                           <>
+                          <Text>Err</Text>
+                          </>
+                        ):(
+                         
+                          <>
+                           {this.state.arrayDoua.map((item, index) =>
                           // if search
                           item.Bool ? (
                             <>
@@ -1038,14 +1051,18 @@ export default class Start_page extends React.Component {
                                 </View>
                               )}
                             </>
-                          ) : null,
+                          ) : null
                         )}
+                          </>
+                        )}
+                       
                       </View>
                     </ScrollView>
                   </View>
                 </ImageBackground>
               </>
             </Modal>
+
             {/**مودل القرأن */}
             <Modal
               onRequestClose={() => {
@@ -1778,8 +1795,9 @@ export default class Start_page extends React.Component {
                     <Text
                       style={{
                         fontSize: 25,
-                        fontWeight: '800',
+                        fontWeight: "bold",
                         color: this.state.dark ? '#000' : '#4f5051',
+                        
                       }}>
                       امساكية رَمَضانُ
                     </Text>
