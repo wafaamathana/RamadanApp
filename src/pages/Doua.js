@@ -8,13 +8,12 @@ import {
   ScrollView,
   ImageBackground,
   TextInput,
-  I18nManager 
+  I18nManager,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 
 export default class Doua extends React.Component {
-  
   constructor() {
     super();
     this.state = {

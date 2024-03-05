@@ -111,14 +111,14 @@ export default class Start_page extends React.Component {
         {
           name: 'الفاتحه ',
           Type: 'مكية',
-          Bool: true,
+
           Bool: true,
           link: 'https://hemanthkollanur.medium.com/understanding-react-native-linking-d794e56cde10',
         },
         {
           name: 'البقره',
           Type: 'مدنية',
-          Bool: true,
+
           Bool: true,
           link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
         },
@@ -126,14 +126,14 @@ export default class Start_page extends React.Component {
         {
           name: 'آل عمران',
           Type: 'مدنية',
-          Bool: true,
+
           Bool: true,
           link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
         },
         {
           name: ' النساء',
           Type: 'مدنية',
-          Bool: true,
+
           Bool: true,
           link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
         },
@@ -146,32 +146,7 @@ export default class Start_page extends React.Component {
         {
           name: 'البقره',
           Type: 'مدنية',
-          Bool: true,
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
 
-        {
-          name: 'آل عمران',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: ' النساء',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: 'الفاتحه ',
-          Type: 'مكية',
-          Bool: true,
-          link: 'https://hemanthkollanur.medium.com/understanding-react-native-linking-d794e56cde10',
-        },
-        {
-          name: 'البقره',
-          Type: 'مدنية',
           Bool: true,
           link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
         },
@@ -194,6 +169,7 @@ export default class Start_page extends React.Component {
           Bool: true,
           link: 'https://hemanthkollanur.medium.com/understanding-react-native-linking-d794e56cde10',
         },
+
         {
           name: 'البقره',
           Type: 'مدنية',
@@ -209,100 +185,6 @@ export default class Start_page extends React.Component {
         },
         {
           name: ' النساء',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: 'الفاتحه ',
-          Type: 'مكية',
-          Bool: true,
-          link: 'https://hemanthkollanur.medium.com/understanding-react-native-linking-d794e56cde10',
-        },
-        {
-          name: 'البقره',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-
-        {
-          name: 'آل عمران',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: ' النساء',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: 'الفاتحه ',
-          Type: 'مكية',
-          Bool: true,
-          link: 'https://hemanthkollanur.medium.com/understanding-react-native-linking-d794e56cde10',
-        },
-        {
-          name: 'البقره',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-
-        {
-          name: 'آل عمران',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: ' النساء',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: 'الفاتحه ',
-          Type: 'مكية',
-          Bool: true,
-          link: 'https://hemanthkollanur.medium.com/understanding-react-native-linking-d794e56cde10',
-        },
-        {
-          name: 'البقره',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-
-        {
-          name: 'آل عمران',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: ' النساء',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-        {
-          name: 'الفاتحه ',
-          Type: 'مكية',
-          Bool: true,
-          link: 'https://hemanthkollanur.medium.com/understanding-react-native-linking-d794e56cde10',
-        },
-        {
-          name: 'البقره',
-          Type: 'مدنية',
-          Bool: true,
-          link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
-        },
-
-        {
-          name: 'آل عمران',
           Type: 'مدنية',
           Bool: true,
           link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
@@ -1062,17 +944,16 @@ export default class Start_page extends React.Component {
                     }}>
                     <TextInput
                       style={{
-                        // backgroundColor: '#100',
+                        // backgroundColor: '#000',
                         // height: 50,
                         borderRadius: 20,
 
                         padding: 10,
-                        width: '80%',
+                        width: '90%',
                         // marginTop: 10,
                         fontSize: 20,
                         color: '#fff',
                       }}
-                      keyboardType="email-address"
                       onChangeText={value => {
                         this.makeSearchDoua(value);
                         this.setState({searchDoua: value});
