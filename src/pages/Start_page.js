@@ -25,10 +25,14 @@ export default class Start_page extends React.Component {
       modelNames: false,
       modelAthkar: false,
       modelRamadan: false,
+      TextModalNames: false,
+      modelTime: false,
       count: 0,
       Text1: 'لا اله الا الله',
       modalinsidesipha: false,
       TextModalDoua: false,
+      TextModalQuran: false,
+      TimingModal: false,
       data: [
         {
           img: require('../backgrounds/moshaf.png'),
@@ -366,29 +370,35 @@ export default class Start_page extends React.Component {
         {
           Bool: true,
           ExplorText: 'القاهره',
+          chevron: true,
         },
         {
           ExplorText: 'الاسكندريه',
           Bool: true,
+          chevron: true,
         },
         {
           ExplorText: 'مطروح',
           Bool: true,
+          chevron: true,
         },
         {
           ExplorText: 'Children',
           Bool: true,
+          chevron: true,
         },
         {
           ExplorText: 'Children',
           Bool: true,
+          chevron: true,
         },
         {
           ExplorText: 'Children',
           Bool: true,
+          chevron: true,
         },
         {
-          Bool: true,
+          chevron: true,
 
           ExplorText: 'Children',
           Bool: true,
@@ -396,24 +406,30 @@ export default class Start_page extends React.Component {
         {
           ExplorText: 'Children',
           Bool: true,
+          chevron: true,
         },
         {
           ExplorText: 'Children',
           Bool: true,
+          chevron: true,
         },
         {
           ExplorText: 'Children',
           Bool: true,
+          chevron: true,
         },
         {
           ExplorText: 'Children',
           Bool: true,
+          chevron: true,
         },
         {
           ExplorText: 'Children',
           Bool: true,
+          chevron: true,
         },
       ],
+      chevron: true,
     };
   }
   makeSearchDoua = searchText => {
@@ -433,58 +449,85 @@ export default class Start_page extends React.Component {
       this.state.TextModalDoua = false;
     }
     this.setState({arrayDoua: list});
-     count=0
+    count = 0;
   };
+
   makeSearchQuran = searchText => {
     let list = this.state.QuranPage;
-
+    let count = 0;
     for (let i = 0; i < list.length; i++) {
       if (list[i].name.toUpperCase().includes(searchText.toUpperCase())) {
         list[i].Bool = true;
       } else {
         list[i].Bool = false;
+        count++;
+      }
+      if (count == list.length) {
+        this.state.TextModalQuran = true;
+      } else if (count != list.length) {
+        this.state.TextModalQuran = false;
       }
     }
-
+    count = 0;
     this.setState({QuranPage: list});
   };
+
   makeSearchNames = searchText => {
     let list = this.state.array;
-
+    let count = 0;
     for (let i = 0; i < list.length; i++) {
       if (list[i].name.toUpperCase().includes(searchText.toUpperCase())) {
         list[i].Bool = true;
       } else {
         list[i].Bool = false;
+        count++;
       }
     }
-
+    if (count == list.length) {
+      this.state.TextModalNames = true;
+    } else if (count != list.length) {
+      this.state.TextModalNames = false;
+    }
+    count = 0;
     this.setState({array: list});
   };
   makeSearchAzkar = searchText => {
     let list = this.state.array2;
-
+    let count = 0;
     for (let i = 0; i < list.length; i++) {
       if (list[i].name1.toUpperCase().includes(searchText.toUpperCase())) {
         list[i].Bool = true;
       } else {
         list[i].Bool = false;
+        count++;
+      }
+      if (count == list.length) {
+        this.state.TextModalDoua = true;
+      } else if (count != list.length) {
+        this.state.TextModalDoua = false;
       }
     }
-
+    count = 0;
     this.setState({array2: list});
   };
   makeSearchExplor = searchText => {
     let list = this.state.ExplorBox;
 
+    let count = 0;
     for (let i = 0; i < list.length; i++) {
       if (list[i].ExplorText.toUpperCase().includes(searchText.toUpperCase())) {
         list[i].Bool = true;
       } else {
         list[i].Bool = false;
+        count++;
       }
     }
-
+    if (count == list.length) {
+      this.state.TextModalDoua = true;
+    } else if (count != list.length) {
+      this.state.TextModalDoua = false;
+    }
+    count = 0;
     this.setState({ExplorBox: list});
   };
 
@@ -556,6 +599,14 @@ export default class Start_page extends React.Component {
     let mode = this.state.dark;
     this.setState({dark: !mode});
   }
+  ExplorBox(index) {
+    let Edit = this.state.ExplorBox;
+    for (let i = 0; i < Edit.length; i++) {
+      Edit[i].chevron = !Edit[i].chevron;
+    }
+    this.setState({chevron: Edit});
+  }
+
   render() {
     return (
       <>
@@ -607,18 +658,47 @@ export default class Start_page extends React.Component {
           animationType="slide">
           <>
             <ImageBackground
-              source={require('../backgrounds/yy.jpg')}
+              source={
+                this.state.dark
+                  ? require('../imgs/darkmode.jpg')
+                  : require('../backgrounds/yy.jpg')
+              }
               style={{
                 flex: 1,
                 justifyContent: 'flex-end',
               }}>
-              {/********************************************* */}
               <TouchableOpacity
                 onPress={() => {
                   this.setState({model: false});
                 }}>
                 <AntDesign name="left" size={30} color="#4f5051" />
               </TouchableOpacity>
+              {/********************************************* */}
+              {/**  <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+
+                  paddingHorizontal: 15,
+                }}>
+                
+                <TouchableOpacity
+                  onPress={() => this.changemode()}
+                  style={{height: 40, width: 40}}>
+                  {this.state.dark ? (
+                    <Image
+                      source={require('../imgs/goldmoon.png')}
+                      style={{height: 35, width: 20, resizeMode: 'contain'}}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../imgs/sunn.png')}
+                      style={{height: 40, width: 40, resizeMode: 'contain'}}
+                    />
+                  )}
+                </TouchableOpacity>
+              </View>*/}
               <View
                 style={{
                   justifyContent: 'space-between',
@@ -632,7 +712,7 @@ export default class Start_page extends React.Component {
                     width: '80%',
                     borderTopRightRadius: 25,
                     borderBottomLeftRadius: 25,
-                    backgroundColor: '#c0bab8',
+                    backgroundColor: this.state.dark ? '#3d3e43' : '#c0bab8',
                     alignItems: 'center',
                     justifyContent: 'center',
                     flexDirection: 'row',
@@ -660,7 +740,7 @@ export default class Start_page extends React.Component {
                       height: '27%',
                       width: '45%',
                       borderRadius: 25,
-                      backgroundColor: '#fff',
+                      //backgroundColor: '#fff',
                       margin: 5,
                       marginTop: 15,
                     }}>
@@ -669,7 +749,9 @@ export default class Start_page extends React.Component {
                         height: '95%',
                         width: '98%',
                         borderRadius: 25,
-                        backgroundColor: '#C0BAB8',
+                        backgroundColor: this.state.dark
+                          ? '#3d3e43'
+                          : '#C0BAB8',
                         justifyContent: 'center',
                         alignItems: 'center',
                         padding: 15,
@@ -700,7 +782,7 @@ export default class Start_page extends React.Component {
                       height: '27%',
                       width: '45%',
                       borderRadius: 25,
-                      backgroundColor: '#fff',
+                      //backgroundColor: '#fff',
                       margin: 5,
                       marginTop: 15,
                     }}>
@@ -709,7 +791,9 @@ export default class Start_page extends React.Component {
                         height: '95%',
                         width: '98%',
                         borderRadius: 25,
-                        backgroundColor: '#C0BAB8',
+                        backgroundColor: this.state.dark
+                          ? '#3d3e43'
+                          : '#c0bab8',
                         justifyContent: 'center',
                         alignItems: 'center',
                         padding: 15,
@@ -738,7 +822,7 @@ export default class Start_page extends React.Component {
                       height: '27%',
                       width: '45%',
                       borderRadius: 25,
-                      backgroundColor: '#fff',
+                      // backgroundColor: '#fff',
                       margin: 5,
                       marginTop: 15,
                     }}>
@@ -747,7 +831,9 @@ export default class Start_page extends React.Component {
                         height: '95%',
                         width: '98%',
                         borderRadius: 25,
-                        backgroundColor: '#C0BAB8',
+                        backgroundColor: this.state.dark
+                          ? '#3d3e43'
+                          : '#c0bab8',
                         justifyContent: 'center',
                         alignItems: 'center',
                         padding: 15,
@@ -770,13 +856,13 @@ export default class Start_page extends React.Component {
                       </Text>
                     </TouchableOpacity>
                   </View>
-                  {/**names***** */}
+                  {/**names*****                                 */}
                   <View
                     style={{
                       height: '27%',
                       width: '45%',
                       borderRadius: 25,
-                      backgroundColor: '#fff',
+                      // backgroundColor: '#fff',
                       margin: 5,
                       marginTop: 15,
                     }}>
@@ -785,7 +871,9 @@ export default class Start_page extends React.Component {
                         height: '95%',
                         width: '98%',
                         borderRadius: 25,
-                        backgroundColor: '#C0BAB8',
+                        backgroundColor: this.state.dark
+                          ? '#3d3e43'
+                          : '#c0bab8',
                         justifyContent: 'center',
                         alignItems: 'center',
                         padding: 15,
@@ -808,13 +896,13 @@ export default class Start_page extends React.Component {
                       </Text>
                     </TouchableOpacity>
                   </View>
-                  {/**Athkar page */}
+                  {/**Athkar page *************************/}
                   <View
                     style={{
                       height: '27%',
                       width: '45%',
                       borderRadius: 25,
-                      backgroundColor: '#fff',
+                      //backgroundColor: '#fff',
                       margin: 5,
                       marginTop: 15,
                     }}>
@@ -823,7 +911,9 @@ export default class Start_page extends React.Component {
                         height: '95%',
                         width: '98%',
                         borderRadius: 25,
-                        backgroundColor: '#C0BAB8',
+                        backgroundColor: this.state.dark
+                          ? '#3d3e43'
+                          : '#c0bab8',
                         justifyContent: 'center',
                         alignItems: 'center',
                         padding: 15,
@@ -852,7 +942,7 @@ export default class Start_page extends React.Component {
                       height: '27%',
                       width: '45%',
                       borderRadius: 25,
-                      backgroundColor: '#fff',
+                      // backgroundColor: '#fff',
                       margin: 5,
                       marginTop: 15,
                     }}>
@@ -861,7 +951,9 @@ export default class Start_page extends React.Component {
                         height: '95%',
                         width: '98%',
                         borderRadius: 25,
-                        backgroundColor: '#C0BAB8',
+                        backgroundColor: this.state.dark
+                          ? '#3d3e43'
+                          : '#c0bab8',
                         justifyContent: 'center',
                         alignItems: 'center',
                         padding: 15,
@@ -970,92 +1062,91 @@ export default class Start_page extends React.Component {
                     <FontAwesome name="search" size={20} color={'#fff'} />
                   </View>
 
-                  {/**----------------------------- */}
+                  {/**-----------------------------map/////////////////////////////////////////////////////////////// */}
                   <View style={style.NamesView}>
                     <ScrollView>
                       <View>
-                        {this.state.TextModalDoua?(
-                           <>
-                          <Text>Err</Text>
-                          </>
-                        ):(
-                         
+                        {this.state.TextModalDoua ? (
                           <>
-                           {this.state.arrayDoua.map((item, index) =>
-                          // if search
-                          item.Bool ? (
-                            <>
-                              <TouchableOpacity
-                                style={{
-                                  flexDirection: 'row',
-
-                                  backgroundColor: '#c0bab8',
-                                  justifyContent: 'space-around',
-                                  alignItems: 'center',
-                                  borderTopRightRadius: 30,
-                                  borderBottomLeftRadius: 30,
-                                  borderRadius: 5,
-                                  padding: 15,
-                                  marginVertical: 3,
-                                }}
-                                onPress={() => {
-                                  this.change(index);
-                                }}>
-                                <Text
-                                  style={{
-                                    fontSize: 20,
-                                    color: '#fff',
-                                    fontWeight: '800',
-                                  }}>
-                                  {item.name1}
-                                </Text>
-                              </TouchableOpacity>
-                              {item.chevron ? null : (
-                                <View>
-                                  <View
+                            <Text style={{fontSize: 20, color: '#000'}}>
+                              Error
+                            </Text>
+                          </>
+                        ) : (
+                          <>
+                            {this.state.arrayDoua.map((item, index) =>
+                              // if search
+                              item.Bool ? (
+                                <>
+                                  <TouchableOpacity
                                     style={{
-                                      width: '100%',
-                                      borderRadius: 20,
-                                      backgroundColor: '#989290',
+                                      flexDirection: 'row',
+                                      backgroundColor: '#c0bab8',
+                                      justifyContent: 'space-around',
                                       alignItems: 'center',
-                                      padding: 20,
-                                      marginBottom: 3,
+                                      borderTopRightRadius: 30,
+                                      borderBottomLeftRadius: 30,
+                                      borderRadius: 5,
+                                      padding: 15,
+                                      marginVertical: 3,
+                                    }}
+                                    onPress={() => {
+                                      this.change(index);
                                     }}>
                                     <Text
                                       style={{
                                         fontSize: 20,
-                                        fontWeight: '600',
                                         color: '#fff',
+                                        fontWeight: '800',
                                       }}>
-                                      {item.Doua1}
+                                      {item.name1}
                                     </Text>
-                                  </View>
-                                  <View
-                                    style={{
-                                      //width: '100%',
-                                      borderRadius: 20,
-                                      backgroundColor: '#989290',
-                                      alignItems: 'center',
-                                      padding: 20,
-                                      marginBottom: 5,
-                                    }}>
-                                    <Text
-                                      style={{
-                                        fontSize: 20,
-                                        fontWeight: '600',
-                                        color: '#fff',
-                                      }}>
-                                      {item.Doua2}
-                                    </Text>
-                                  </View>
-                                </View>
-                              )}
-                            </>
-                          ) : null
-                        )}
+                                  </TouchableOpacity>
+                                  {item.chevron ? null : (
+                                    <View>
+                                      <View
+                                        style={{
+                                          width: '100%',
+                                          borderRadius: 20,
+                                          backgroundColor: '#989290',
+                                          alignItems: 'center',
+                                          padding: 20,
+                                          marginBottom: 3,
+                                        }}>
+                                        <Text
+                                          style={{
+                                            fontSize: 20,
+                                            fontWeight: '600',
+                                            color: '#fff',
+                                          }}>
+                                          {item.Doua1}
+                                        </Text>
+                                      </View>
+                                      <View
+                                        style={{
+                                          //width: '100%',
+                                          borderRadius: 20,
+                                          backgroundColor: '#989290',
+                                          alignItems: 'center',
+                                          padding: 20,
+                                          marginBottom: 5,
+                                        }}>
+                                        <Text
+                                          style={{
+                                            fontSize: 20,
+                                            fontWeight: '600',
+                                            color: '#fff',
+                                          }}>
+                                          {item.Doua2}
+                                        </Text>
+                                      </View>
+                                    </View>
+                                  )}
+                                </>
+                              ) : null,
+                            )}
                           </>
                         )}
-                       
                       </View>
                     </ScrollView>
                   </View>
@@ -1079,9 +1170,7 @@ export default class Start_page extends React.Component {
                       flexDirection: 'row',
                       justifyContent: 'space-around',
                       alignItems: 'center',
-
                       width: '100%',
-
                       paddingVertical: 10,
                     }}>
                     <TouchableOpacity
@@ -1099,7 +1188,7 @@ export default class Start_page extends React.Component {
                       القرآن الكريم
                     </Text>
                     <TouchableOpacity>
-                      <Entypo name="moon" size={25} color={'#4f5051'} />
+                      <View></View>
                     </TouchableOpacity>
                   </View>
                   <View
@@ -1143,65 +1232,71 @@ export default class Start_page extends React.Component {
                     }}>
                     <ScrollView>
                       <View>
-                        {this.state.QuranPage.map((item, index) =>
-                          item.Bool ? (
-                            <>
-                              <TouchableOpacity
-                                style={{
-                                  // height: '10%',
-                                  width: '100%',
-                                  borderRadius: 20,
-                                  backgroundColor: '#c0bab8',
-                                  marginBottom: 10,
-                                  alignItems: 'center',
-                                  justifyContent: 'space-between',
-                                  flexDirection: 'row',
-                                  paddingHorizontal: 20,
-                                  alignSelf: 'center',
-                                  padding: 15,
-                                }}
-                                onPress={() => {
-                                  Linking.openURL(item.link);
-                                }}>
-                                <Text
-                                  style={{
-                                    fontSize: 22,
-                                    color: '#4f5051',
-                                    fontWeight: '800',
-                                  }}>
-                                  {item.Type}
-                                </Text>
-
-                                <Text
-                                  style={{
-                                    fontSize: 20,
-                                    color: '#4f5051',
-                                    fontWeight: '800',
-                                  }}>
-                                  {item.name}
-                                </Text>
-
-                                <View
-                                  style={{
-                                    // height: '41%',
-                                    width: '10%',
-                                    borderRadius: 25,
-                                    backgroundColor: '#fff',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                  }}>
-                                  <Text
+                        {this.state.TextModalQuran ? (
+                          <Text>error</Text>
+                        ) : (
+                          <>
+                            {this.state.QuranPage.map((item, index) =>
+                              item.Bool ? (
+                                <>
+                                  <TouchableOpacity
                                     style={{
-                                      fontSize: 20,
-                                      color: '#4f5051',
-                                      fontWeight: '800',
+                                      // height: '10%',
+                                      width: '100%',
+                                      borderRadius: 20,
+                                      backgroundColor: '#c0bab8',
+                                      marginBottom: 10,
+                                      alignItems: 'center',
+                                      justifyContent: 'space-between',
+                                      flexDirection: 'row',
+                                      paddingHorizontal: 20,
+                                      alignSelf: 'center',
+                                      padding: 15,
+                                    }}
+                                    onPress={() => {
+                                      Linking.openURL(item.link);
                                     }}>
-                                    {index + 1}
-                                  </Text>
-                                </View>
-                              </TouchableOpacity>
-                            </>
-                          ) : null,
+                                    <Text
+                                      style={{
+                                        fontSize: 22,
+                                        color: '#4f5051',
+                                        fontWeight: '800',
+                                      }}>
+                                      {item.Type}
+                                    </Text>
+
+                                    <Text
+                                      style={{
+                                        fontSize: 20,
+                                        color: '#4f5051',
+                                        fontWeight: '800',
+                                      }}>
+                                      {item.name}
+                                    </Text>
+
+                                    <View
+                                      style={{
+                                        // height: '41%',
+                                        width: '10%',
+                                        borderRadius: 25,
+                                        backgroundColor: '#fff',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                      }}>
+                                      <Text
+                                        style={{
+                                          fontSize: 20,
+                                          color: '#4f5051',
+                                          fontWeight: '800',
+                                        }}>
+                                        {index + 1}
+                                      </Text>
+                                    </View>
+                                  </TouchableOpacity>
+                                </>
+                              ) : null,
+                            )}
+                          </>
                         )}
                       </View>
                     </ScrollView>
@@ -1249,7 +1344,7 @@ export default class Start_page extends React.Component {
                       التسبيحات
                     </Text>
                     <TouchableOpacity>
-                      <Entypo name="moon" size={25} color={'#4f5051'} />
+                      <View></View>
                     </TouchableOpacity>
                   </View>
                   <View
@@ -1526,18 +1621,18 @@ export default class Start_page extends React.Component {
                           flexDirection: 'row',
                           width: '80%',
                           paddingHorizontal: 10,
-                          marginTop: 10,
+                          //marginTop: 10,
                           borderRadius: 20,
                           backgroundColor: '#66605E',
                         }}>
                         <TextInput
                           style={{
-                            // backgroundColor: '#100',
+                            //backgroundColor: '#100',
                             // height: 50,
                             borderRadius: 20,
 
                             padding: 10,
-                            width: '80%',
+                            width: '90%',
                             // marginTop: 10,
                             fontSize: 20,
                             color: '#fff',
@@ -1553,43 +1648,53 @@ export default class Start_page extends React.Component {
                         <FontAwesome name="search" size={20} color={'#fff'} />
                       </View>
                       <View>
-                        {this.state.array.map((item, index) =>
-                          item.Bool ? (
-                            <>
-                              <View
-                                style={{
-                                  flexDirection: 'row',
-
-                                  backgroundColor: '#c0bab8',
-                                  justifyContent: 'flex-end',
-                                  alignItems: 'center',
-                                  borderTopRightRadius: 35,
-                                  borderBottomLeftRadius: 35,
-                                  padding: 10,
-                                  marginVertical: 3,
-                                }}>
-                                <View>
-                                  <Text
+                        {this.state.TextModalNames ? (
+                          <>
+                            <Text>kalam</Text>
+                          </>
+                        ) : (
+                          <>
+                            {this.state.array.map((item, index) =>
+                              item.Bool ? (
+                                <>
+                                  <TouchableOpacity
                                     style={{
-                                      fontSize: 20,
-                                      color: '#fff',
-                                      fontWeight: '800',
-                                    }}>
-                                    {item.name}
-                                  </Text>
+                                      flexDirection: 'row',
 
-                                  <Text style={{fontSize: 20, color: '#fff'}}>
-                                    {item.name2}
-                                  </Text>
-                                </View>
-                                <View style={{marginLeft: 20}}>
-                                  <Text style={{fontSize: 20, color: '#fff'}}>
-                                    {index + 1}
-                                  </Text>
-                                </View>
-                              </View>
-                            </>
-                          ) : null,
+                                      backgroundColor: '#c0bab8',
+                                      justifyContent: 'flex-end',
+                                      alignItems: 'center',
+                                      borderTopRightRadius: 35,
+                                      borderBottomLeftRadius: 35,
+                                      padding: 10,
+                                      marginVertical: 3,
+                                    }}>
+                                    <View>
+                                      <Text
+                                        style={{
+                                          fontSize: 20,
+                                          color: '#fff',
+                                          fontWeight: '800',
+                                        }}>
+                                        {item.name}
+                                      </Text>
+
+                                      <Text
+                                        style={{fontSize: 20, color: '#fff'}}>
+                                        {item.name2}
+                                      </Text>
+                                    </View>
+                                    <View style={{marginLeft: 20}}>
+                                      <Text
+                                        style={{fontSize: 20, color: '#fff'}}>
+                                        {index + 1}
+                                      </Text>
+                                    </View>
+                                  </TouchableOpacity>
+                                </>
+                              ) : null,
+                            )}
+                          </>
                         )}
                       </View>
                     </ScrollView>
@@ -1680,76 +1785,84 @@ export default class Start_page extends React.Component {
                   <View style={style.NamesView}>
                     <ScrollView>
                       <View>
-                        {this.state.array2.map((item, index) =>
-                          item.Bool ? (
-                            <>
-                              <TouchableOpacity
-                                style={{
-                                  flexDirection: 'row',
+                        {this.state.TextModalDoua ? (
+                          <>
+                            <Text>errorrr</Text>
+                          </>
+                        ) : (
+                          <>
+                            {this.state.array2.map((item, index) =>
+                              item.Bool ? (
+                                <>
+                                  <TouchableOpacity
+                                    style={{
+                                      flexDirection: 'row',
 
-                                  backgroundColor: '#B6B0AE',
-                                  justifyContent: 'space-around',
-                                  alignItems: 'center',
-                                  borderBottomRightRadius: 30,
-                                  borderTopLeftRadius: 30,
-                                  borderRadius: 5,
-                                  padding: 15,
-                                  marginVertical: 3,
-                                }}
-                                onPress={() => {
-                                  this.changeAthkar(index);
-                                }}>
-                                <Text
-                                  style={{
-                                    fontSize: 20,
-                                    color: '#fff',
-                                    fontWeight: '800',
-                                  }}>
-                                  {item.name1}
-                                </Text>
-                              </TouchableOpacity>
-                              {item.chevron ? null : (
-                                <View>
-                                  <View
-                                    style={{
-                                      width: '100%',
-                                      borderRadius: 20,
-                                      backgroundColor: '#989290',
+                                      backgroundColor: '#B6B0AE',
+                                      justifyContent: 'space-around',
                                       alignItems: 'center',
-                                      padding: 20,
-                                      marginBottom: 3,
+                                      borderBottomRightRadius: 30,
+                                      borderTopLeftRadius: 30,
+                                      borderRadius: 5,
+                                      padding: 15,
+                                      marginVertical: 3,
+                                    }}
+                                    onPress={() => {
+                                      this.changeAthkar(index);
                                     }}>
                                     <Text
                                       style={{
                                         fontSize: 20,
-                                        fontWeight: '600',
                                         color: '#fff',
+                                        fontWeight: '800',
                                       }}>
-                                      {item.Doua1}
+                                      {item.name1}
                                     </Text>
-                                  </View>
-                                  <View
-                                    style={{
-                                      //width: '100%',
-                                      borderRadius: 20,
-                                      backgroundColor: '#989290',
-                                      alignItems: 'center',
-                                      padding: 20,
-                                      marginBottom: 5,
-                                    }}>
-                                    <Text
-                                      style={{
-                                        fontSize: 20,
-                                        fontWeight: '600',
-                                        color: '#fff',
-                                      }}>
-                                      {item.Doua2}
-                                    </Text>
-                                  </View>
-                                </View>
-                              )}
-                            </>
-                          ) : null,
+                                  </TouchableOpacity>
+                                  {item.chevron ? null : (
+                                    <View>
+                                      <View
+                                        style={{
+                                          width: '100%',
+                                          borderRadius: 20,
+                                          backgroundColor: '#989290',
+                                          alignItems: 'center',
+                                          padding: 20,
+                                          marginBottom: 3,
+                                        }}>
+                                        <Text
+                                          style={{
+                                            fontSize: 20,
+                                            fontWeight: '600',
+                                            color: '#fff',
+                                          }}>
+                                          {item.Doua1}
+                                        </Text>
+                                      </View>
+                                      <View
+                                        style={{
+                                          //width: '100%',
+                                          borderRadius: 20,
+                                          backgroundColor: '#989290',
+                                          alignItems: 'center',
+                                          padding: 20,
+                                          marginBottom: 5,
+                                        }}>
+                                        <Text
+                                          style={{
+                                            fontSize: 20,
+                                            fontWeight: '600',
+                                            color: '#fff',
+                                          }}>
+                                          {item.Doua2}
+                                        </Text>
+                                      </View>
+                                    </View>
+                                  )}
+                                </>
+                              ) : null,
+                            )}
+                          </>
                         )}
                       </View>
                     </ScrollView>
@@ -1766,11 +1879,7 @@ export default class Start_page extends React.Component {
               animationType="slide">
               <>
                 <ImageBackground
-                  source={
-                    this.state.dark
-                      ? require('../backgrounds/yy.jpg')
-                      : require('../backgrounds/yy.jpg')
-                  }
+                  source={require('../backgrounds/yy.jpg')}
                   style={{flex: 1}}>
                   <View
                     style={{
@@ -1795,18 +1904,13 @@ export default class Start_page extends React.Component {
                     <Text
                       style={{
                         fontSize: 25,
-                        fontWeight: "bold",
+                        fontWeight: 'bold',
                         color: this.state.dark ? '#000' : '#4f5051',
-                        
                       }}>
                       امساكية رَمَضانُ
                     </Text>
-                    <TouchableOpacity onPress={() => this.changemode()}>
-                      {this.state.dark ? (
-                        <Entypo name="moon" size={25} color={'#4f5051'} />
-                      ) : (
-                        <FontAwesome name="sun-o" size={20} color={'#4f5051'} />
-                      )}
+                    <TouchableOpacity>
+                      <View></View>
                     </TouchableOpacity>
                   </View>
 
@@ -1858,41 +1962,57 @@ export default class Start_page extends React.Component {
                           width: '100%',
 
                           padding: 10,
-                          flexDirection: 'row',
-                          flexWrap: 'wrap',
+                          // flexDirection: 'row',
+                          //flexWrap: 'wrap',
                           justifyContent: 'space-between',
 
                           borderRadius: 25,
                           paddingVertical: 20,
                         }}>
-                        {this.state.ExplorBox.map(data =>
-                          data.Bool ? (
-                            <>
-                              <TouchableOpacity
-                                style={{
-                                  // height: '7%',
-                                  width: '48%',
-                                  paddingVertical: 15,
-                                  borderRadius: 20,
-                                  backgroundColor: this.state.dark
-                                    ? '#928575'
-                                    : '#c0bab8',
-                                  marginBottom: 10,
-                                  justifyContent: 'space-around',
-                                  alignItems: 'center',
-                                  flexDirection: 'row',
-                                }}>
-                                <Text
-                                  style={{
-                                    fontSize: 22,
-                                    fontWeight: '700',
-                                    color: this.state.dark ? '#fff' : '#fff',
-                                  }}>
-                                  {data.ExplorText}
-                                </Text>
-                              </TouchableOpacity>
-                            </>
-                          ) : null,
+                        {this.state.TextModalDoua ? (
+                          <>
+                            <Text>jj</Text>
+                          </>
+                        ) : (
+                          <>
+                            {this.state.ExplorBox.map((data, item) =>
+                              data.Bool ? (
+                                <>
+                                  <TouchableOpacity
+                                    style={{
+                                      // height: '7%',
+                                      //  width: '48%',
+                                      width: '100%',
+                                      paddingVertical: 15,
+                                      borderRadius: 20,
+                                      backgroundColor: '#c0bab8',
+                                      marginBottom: 10,
+                                      justifyContent: 'center',
+                                      alignItems: 'center',
+                                      flexDirection: 'row',
+                                    }}
+                                    onPress={() => {
+                                      this.ExplorBox();
+                                    }}>
+                                    <Text
+                                      style={{
+                                        fontSize: 22,
+                                        fontWeight: '700',
+                                        color: '#fff',
+                                      }}>
+                                      {data.ExplorText}
+                                    </Text>
+                                  </TouchableOpacity>
+                                  {data.chevron ? null : (
+                                    <Image
+                                      source={require('../imgs/Mosque.jpg')}
+                                      style={{height: 100, width: '100%'}}
+                                    />
+                                  )}
+                                </>
+                              ) : null,
+                            )}
+                          </>
                         )}
                       </View>
                     </ScrollView>
@@ -1900,6 +2020,18 @@ export default class Start_page extends React.Component {
                 </ImageBackground>
               </>
             </Modal>
+            {/**Time modallllllll 
+            <Modal
+              animationType="slide"
+              onRequestClose={() => {
+                this.setState({modelTime: false});
+              }}
+              visible={this.state.modelTime}
+              transparent={true}>
+              <ImageBackground
+                source={require('../backgrounds/ooo.jpg')}
+                style={{flex: 1}}></ImageBackground>
+            </Modal>*/}
           </>
         </Modal>
       </>
