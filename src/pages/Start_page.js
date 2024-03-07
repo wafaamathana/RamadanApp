@@ -10,14 +10,35 @@ import {
   Image,
   Linking,
   TextInput,
+  I18nManager
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import LottieView from 'lottie-react-native';
+import * as Animatable from 'react-native-animatable';
+
 export default class Start_page extends React.Component {
+  componentDidMount() {
+    // Enable RTL right to left
+    //علشان نثبت ال app
+    I18nManager.forceRTL(true);
+    // Allow RTL
+    I18nManager.allowRTL(true);
+  }
+  componentWillUnmount() {
+    //بتعكس الحالات
+    // Reset RTL settings when the component unmounts
+    I18nManager.forceRTL(false);
+    I18nManager.allowRTL(false);
+  }
+
+
+
   constructor() {
     super();
     this.state = {
+      modalVisible: false,
       model: false,
       modelDoua: false,
       modelQuran: false,
@@ -95,6 +116,264 @@ export default class Start_page extends React.Component {
         },
         {
           name1: 'Sleeping',
+
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (١) ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ (٢) ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (٣) مَـٰلِكِ يَوْمِ ٱلدِّينِ (٤) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥) ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ (٦) صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ (٧)',
+
+          Doua2:
+            'رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّـٰلِحِينَ (٨٣) وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْـَٔاخِرِينَ (٨٤) وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ (٨٥)',
+          Doua3:
+            'رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَـٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ (١٩٣) رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَـٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ (١٩٤)',
+          Doua4:
+            'يَتَرَقَّبُ ۖ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّـٰلِمِينَ (٢١)',
+        },
+        {
+          name1: 'دعاء',
+          chevron: true,
+          Bool: true,
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Patience',
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Sleeping',
+
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (١) ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ (٢) ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (٣) مَـٰلِكِ يَوْمِ ٱلدِّينِ (٤) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥) ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ (٦) صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ (٧)',
+
+          Doua2:
+            'رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّـٰلِحِينَ (٨٣) وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْـَٔاخِرِينَ (٨٤) وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ (٨٥)',
+          Doua3:
+            'رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَـٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ (١٩٣) رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَـٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ (١٩٤)',
+          Doua4:
+            'يَتَرَقَّبُ ۖ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّـٰلِمِينَ (٢١)',
+        },
+        {
+          name1: 'دعاء',
+          chevron: true,
+          Bool: true,
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Patience',
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Sleeping',
+
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (١) ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ (٢) ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (٣) مَـٰلِكِ يَوْمِ ٱلدِّينِ (٤) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥) ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ (٦) صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ (٧)',
+
+          Doua2:
+            'رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّـٰلِحِينَ (٨٣) وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْـَٔاخِرِينَ (٨٤) وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ (٨٥)',
+          Doua3:
+            'رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَـٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ (١٩٣) رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَـٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ (١٩٤)',
+          Doua4:
+            'يَتَرَقَّبُ ۖ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّـٰلِمِينَ (٢١)',
+        },
+        {
+          name1: 'دعاء',
+          chevron: true,
+          Bool: true,
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Patience',
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Sleeping',
+
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (١) ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ (٢) ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (٣) مَـٰلِكِ يَوْمِ ٱلدِّينِ (٤) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥) ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ (٦) صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ (٧)',
+
+          Doua2:
+            'رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّـٰلِحِينَ (٨٣) وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْـَٔاخِرِينَ (٨٤) وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ (٨٥)',
+          Doua3:
+            'رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَـٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ (١٩٣) رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَـٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ (١٩٤)',
+          Doua4:
+            'يَتَرَقَّبُ ۖ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّـٰلِمِينَ (٢١)',
+        },
+        {
+          name1: 'دعاء',
+          chevron: true,
+          Bool: true,
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Patience',
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Sleeping',
+
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (١) ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ (٢) ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (٣) مَـٰلِكِ يَوْمِ ٱلدِّينِ (٤) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥) ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ (٦) صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ (٧)',
+
+          Doua2:
+            'رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّـٰلِحِينَ (٨٣) وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْـَٔاخِرِينَ (٨٤) وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ (٨٥)',
+          Doua3:
+            'رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَـٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ (١٩٣) رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَـٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ (١٩٤)',
+          Doua4:
+            'يَتَرَقَّبُ ۖ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّـٰلِمِينَ (٢١)',
+        },
+        {
+          name1: 'دعاء',
+          chevron: true,
+          Bool: true,
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Patience',
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Sleeping',
+
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (١) ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَـٰلَمِينَ (٢) ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ (٣) مَـٰلِكِ يَوْمِ ٱلدِّينِ (٤) إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ (٥) ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ (٦) صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ (٧)',
+
+          Doua2:
+            'رَبِّ هَبْ لِى حُكْمًۭا وَأَلْحِقْنِى بِٱلصَّـٰلِحِينَ (٨٣) وَٱجْعَل لِّى لِسَانَ صِدْقٍۢ فِى ٱلْـَٔاخِرِينَ (٨٤) وَٱجْعَلْنِى مِن وَرَثَةِ جَنَّةِ ٱلنَّعِيمِ (٨٥)',
+          Doua3:
+            'رَّبَّنَآ إِنَّنَا سَمِعْنَا مُنَادِيًۭا يُنَادِى لِلْإِيمَـٰنِ أَنْ ءَامِنُوا۟ بِرَبِّكُمْ فَـَٔامَنَّا ۚ رَبَّنَا فَٱغْفِرْ لَنَا ذُنُوبَنَا وَكَفِّرْ عَنَّا سَيِّـَٔاتِنَا وَتَوَفَّنَا مَعَ ٱلْأَبْرَارِ (١٩٣) رَبَّنَا وَءَاتِنَا مَا وَعَدتَّنَا عَلَىٰ رُسُلِكَ وَلَا تُخْزِنَا يَوْمَ ٱلْقِيَـٰمَةِ ۗ إِنَّكَ لَا تُخْلِفُ ٱلْمِيعَادَ (١٩٤)',
+          Doua4:
+            'يَتَرَقَّبُ ۖ قَالَ رَبِّ نَجِّنِى مِنَ ٱلْقَوْمِ ٱلظَّـٰلِمِينَ (٢١)',
+        },
+        {
+          name1: 'دعاء',
+          chevron: true,
+          Bool: true,
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Patience',
+          chevron: true,
+          Bool: true,
+
+          Doua1:
+            'رَبَّنَا وَٱجْعَلْنَا مُسْلِمَيْنِ لَكَ وَمِن ذُرِّيَّتِنَآ أُمَّةًۭ مُّسْلِمَةًۭ لَّكَ وَأَرِنَا مَنَاسِكَنَا وَتُبْ عَلَيْنَآ ۖ إِنَّكَ أَنتَ ٱلتَّوَّابُ ٱلرَّحِيمُ',
+          Doua2:
+            'رَبِّ ٱجْعَلْنِى مُقِيمَ ٱلصَّلَوٰةِ وَمِن ذُرِّيَّتِى ۚ رَبَّنَا وَتَقَبَّلْ دُعَآءِ (٤٠) رَبَّنَا ٱغْفِرْ لِى وَلِوَٰلِدَىَّ وَلِلْمُؤْمِنِينَ يَوْمَ يَقُومُ ٱلْحِسَابُ',
+          Doua3:
+            'رَبَّنَا هَبْ لَنَا مِنْ أَزْوَٰجِنَا وَذُرِّيَّـٰتِنَا قُرَّةَ أَعْيُنٍۢ وَٱجْعَلْنَا لِلْمُتَّقِينَ إِمَامًا',
+          Doua4:
+            'رَبِّ هَبْ لِى مِن لَّدُنكَ ذُرِّيَّةًۭ طَيِّبَةً ۖ إِنَّكَ سَمِيعُ ٱلدُّعَآءِ',
+        },
+        {
+          name1: 'Sleepdddding',
 
           chevron: true,
           Bool: true,
@@ -188,7 +467,7 @@ export default class Start_page extends React.Component {
           link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
         },
         {
-          name: ' النساء',
+          name: ' الddنساء',
           Type: 'مدنية',
           Bool: true,
           link: 'https://www.youtube.com/watch?v=Y1M6hJHHrjM&t=329s',
@@ -282,7 +561,7 @@ export default class Start_page extends React.Component {
           name2: ' Allah,God ,One God',
         },
         {
-          name: 'الله Allah',
+          name: 'الله Allsssah',
           Bool: true,
           name2: ' Allah,God ,One God',
         },
@@ -363,6 +642,80 @@ export default class Start_page extends React.Component {
           Bool: true,
           chevron: true,
         },
+        {
+          name1: 'اذكار الصباح',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'اذكار المساء',
+          Bool: true,
+          chevron: true,
+        },
+
+        {
+          name1: 'قبل النوم',
+          Bool: true,
+          chevron: true,
+        },
+
+        {
+          name1: 'الاستيقاظ',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'بعد الصلاة',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'عند سماع الآذان',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'قبل النوم',
+          Bool: true,
+          chevron: true,
+        },
+
+        {
+          name1: 'الاستيقاظ',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'بعد الصلاة',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'عند سماع الآذان',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'قبل النوم',
+          Bool: true,
+          chevron: true,
+        },
+
+        {
+          name1: 'الاستيقاظ',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'بعد الصلاة',
+          Bool: true,
+          chevron: true,
+        },
+        {
+          name1: 'عند ddسماع الآذان',
+          Bool: true,
+          chevron: true,
+        },
       ],
       dark: false,
       SearchExplor: '',
@@ -370,63 +723,74 @@ export default class Start_page extends React.Component {
         {
           Bool: true,
           ExplorText: 'القاهره',
-          chevron: true,
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
         },
         {
           ExplorText: 'الاسكندريه',
           Bool: true,
-          chevron: true,
+          Open: true,
+          Img: require('../imgs/allah.jpg'),
         },
         {
           ExplorText: 'مطروح',
           Bool: true,
-          chevron: true,
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
         },
         {
           ExplorText: 'Children',
           Bool: true,
-          chevron: true,
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
+        },
+        {
+          Bool: true,
+          ExplorText: 'القاهره',
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
+        },
+        {
+          ExplorText: 'الاسكندريه',
+          Bool: true,
+          Open: true,
+          Img: require('../imgs/allah.jpg'),
+        },
+        {
+          ExplorText: 'مطروح',
+          Bool: true,
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
         },
         {
           ExplorText: 'Children',
           Bool: true,
-          chevron: true,
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
+        },
+        {
+          Bool: true,
+          ExplorText: 'القاهره',
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
+        },
+        {
+          ExplorText: 'الاسكندريه',
+          Bool: true,
+          Open: true,
+          Img: require('../imgs/allah.jpg'),
+        },
+        {
+          ExplorText: 'مطdروح',
+          Bool: true,
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
         },
         {
           ExplorText: 'Children',
           Bool: true,
-          chevron: true,
-        },
-        {
-          chevron: true,
-
-          ExplorText: 'Children',
-          Bool: true,
-        },
-        {
-          ExplorText: 'Children',
-          Bool: true,
-          chevron: true,
-        },
-        {
-          ExplorText: 'Children',
-          Bool: true,
-          chevron: true,
-        },
-        {
-          ExplorText: 'Children',
-          Bool: true,
-          chevron: true,
-        },
-        {
-          ExplorText: 'Children',
-          Bool: true,
-          chevron: true,
-        },
-        {
-          ExplorText: 'Children',
-          Bool: true,
-          chevron: true,
+          Open: true,
+          Img: require('../imgs/cairo.jpg'),
         },
       ],
       chevron: true,
@@ -574,10 +938,6 @@ export default class Start_page extends React.Component {
     this.setState({star: Edit});
   }
 
-  function() {
-    let info = this.state.data;
-    this.setState({data: info});
-  }
   functionQuran(index) {
     let info = this.state.QuranPage;
     this.setState({QuranPage: info});
@@ -588,25 +948,22 @@ export default class Start_page extends React.Component {
       Edit[i].chevron = true;
     }
     Edit[index].chevron = false;
-    this.setState({star: Edit});
-  }
-  functionRamadan() {
-    let Explor = this.state.ExplorBox;
-    this.setState({ExplorBox: !Explor});
+    this.setState({array2: Edit});
   }
 
   changemode() {
     let mode = this.state.dark;
     this.setState({dark: !mode});
   }
-  ExplorBox(index) {
-    let Edit = this.state.ExplorBox;
-    for (let i = 0; i < Edit.length; i++) {
-      Edit[i].chevron = !Edit[i].chevron;
+  ExplorBoxfun(index) {
+    let lastEdit = this.state.ExplorBox;
+    for (let i = 0; i < lastEdit.length; i++) {
+      lastEdit[i].Open = true;
     }
-    this.setState({chevron: Edit});
+    console.log(lastEdit[index]);
+    lastEdit[index].Open = false;
+    this.setState({ExplorBox: lastEdit});
   }
-
   render() {
     return (
       <>
@@ -658,47 +1015,19 @@ export default class Start_page extends React.Component {
           animationType="slide">
           <>
             <ImageBackground
-              source={
-                this.state.dark
-                  ? require('../imgs/darkmode.jpg')
-                  : require('../backgrounds/yy.jpg')
-              }
+              source={require('../backgrounds/yy.jpg')}
               style={{
                 flex: 1,
-                justifyContent: 'flex-end',
               }}>
+              {/* <ScrollView> */}
+
               <TouchableOpacity
                 onPress={() => {
                   this.setState({model: false});
                 }}>
                 <AntDesign name="left" size={30} color="#4f5051" />
               </TouchableOpacity>
-              {/********************************************* */}
-              {/**  <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
 
-                  paddingHorizontal: 15,
-                }}>
-                
-                <TouchableOpacity
-                  onPress={() => this.changemode()}
-                  style={{height: 40, width: 40}}>
-                  {this.state.dark ? (
-                    <Image
-                      source={require('../imgs/goldmoon.png')}
-                      style={{height: 35, width: 20, resizeMode: 'contain'}}
-                    />
-                  ) : (
-                    <Image
-                      source={require('../imgs/sunn.png')}
-                      style={{height: 40, width: 40, resizeMode: 'contain'}}
-                    />
-                  )}
-                </TouchableOpacity>
-              </View>*/}
               <View
                 style={{
                   justifyContent: 'space-between',
@@ -706,6 +1035,7 @@ export default class Start_page extends React.Component {
                   height: '95%',
                   //backgroundColor: '#666',
                 }}>
+                {/* <ScrollView> */}
                 <View
                   style={{
                     height: '15%',
@@ -718,269 +1048,218 @@ export default class Start_page extends React.Component {
                     flexDirection: 'row',
                   }}>
                   <Text
-                    style={{fontSize: 25, fontWeight: '700', color: '#fff'}}>
+                    style={{
+                      fontSize: 25,
+                      fontWeight: '700',
+                      color: '#fff',
+                    }}>
                     احفظ الله تجده تجاهك
                   </Text>
                 </View>
+                {/* <View > */}
+                <LottieView
+                  source={require('../Lottie/AnimationHome.json')} // Provide the path to your Lottie animation JSON file
+                  autoPlay
+                  loop
+                  style={{width: '100%', height: 200}}
+                />
+                {/* </View> */}
                 <View
                   style={{
-                    height: '65%',
-                    width: '100%',
+                    //  height: '100%',
+                    // width: '100%',
                     borderTopLeftRadius: 30,
                     borderTopRightRadius: 30,
-                    // backgroundColor: '#000',
+                    backgroundColor: '#000',
                     flexDirection: 'row',
                     flexWrap: 'wrap',
                     justifyContent: 'space-around',
                   }}>
                   {/**map ------------------------------------------------------------------*/}
                   {/**Duapage____________________________________ */}
-                  <View
-                    style={{
-                      height: '27%',
-                      width: '45%',
-                      borderRadius: 25,
-                      //backgroundColor: '#fff',
-                      margin: 5,
-                      marginTop: 15,
-                    }}>
-                    <TouchableOpacity
+            {/* <ScrollView>   */}
+                  <ScrollView contentContainerStyle={{backgroundColor:"#3d3e43",
+                 borderTopLeftRadius: 30,
+                 borderTopRightRadius: 30,
+                  flexDirection: 'row',
+                 flexWrap: 'wrap',
+                 alignItems:"center",
+                 justifyContent:"space-evenly"}}>
+                    <View
                       style={{
-                        height: '95%',
-                        width: '98%',
+                        
                         borderRadius: 25,
-                        backgroundColor: this.state.dark
-                          ? '#3d3e43'
-                          : '#C0BAB8',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: 15,
-                      }}
-                      onPress={() => {
-                        this.setState({modelDoua: true});
-                      }}>
-                      <Image
-                        source={this.state.data[1].img}
-                        style={{height: '90%', width: '60%'}}
-                      />
-
-                      <Text
+                        //backgroundColor: '#fff',
+                        margin: 5,
+                       }}>
+                      <TouchableOpacity
                         style={{
-                          fontSize: 20,
-                          fontWeight: '900',
-                          color: '#fff',
+                           borderRadius: 25,
+                          backgroundColor: this.state.dark
+                            ? '#3d3e43'
+                            : '#C0BAB8',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: 15,
+                        }}
+                        onPress={() => {
+                          this.setState({modelDoua: true});
                         }}>
-                        {this.state.data[1].name}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                  {/*******************end duapage */}
+                        <Image
+                          source={this.state.data[1].img}
+                          style={{height: 75, width: 75}}
+                        />
+ 
+                      </TouchableOpacity>
+                    </View>
+                    {/*******************end duapage */}
 
-                  {/************quran page*********** */}
-                  <View
-                    style={{
-                      height: '27%',
-                      width: '45%',
-                      borderRadius: 25,
-                      //backgroundColor: '#fff',
-                      margin: 5,
-                      marginTop: 15,
-                    }}>
-                    <TouchableOpacity
+                    {/************quran page*********** */}
+                    <View
                       style={{
-                        height: '95%',
-                        width: '98%',
+                       
                         borderRadius: 25,
-                        backgroundColor: this.state.dark
-                          ? '#3d3e43'
-                          : '#c0bab8',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: 15,
-                      }}
-                      onPress={() => {
-                        this.setState({modelQuran: true});
+                        //backgroundColor: '#fff',
+                        margin: 5,
+                        // marginTop: 15,
                       }}>
-                      <Image
-                        source={this.state.data[0].img}
-                        style={{height: '90%', width: '60%'}}
-                      />
-
-                      <Text
+                      <TouchableOpacity
                         style={{
-                          fontSize: 20,
-                          fontWeight: '900',
-                          color: '#fff',
+                          
+                          borderRadius: 25,
+                          backgroundColor: this.state.dark
+                            ? '#3d3e43'
+                            : '#c0bab8',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: 15,
+                        }}
+                        onPress={() => {
+                          this.setState({modelQuran: true});
                         }}>
-                        {this.state.data[0].name}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                  {/**siphaaaaaaa */}
-                  <View
-                    style={{
-                      height: '27%',
-                      width: '45%',
-                      borderRadius: 25,
-                      // backgroundColor: '#fff',
-                      margin: 5,
-                      marginTop: 15,
-                    }}>
-                    <TouchableOpacity
+                        <Image
+                          source={this.state.data[0].img}
+                          style={{height: 75, width: 75}}
+                        />
+
+                       
+                      </TouchableOpacity>
+                    </View>
+                    {/**siphaaaaaaa */}
+                    <View
                       style={{
-                        height: '95%',
-                        width: '98%',
-                        borderRadius: 25,
-                        backgroundColor: this.state.dark
-                          ? '#3d3e43'
-                          : '#c0bab8',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: 15,
-                      }}
-                      onPress={() => {
-                        this.setState({modelsipha: true});
-                      }}>
-                      <Image
-                        source={this.state.data[2].img}
-                        style={{height: '90%', width: '60%'}}
-                      />
-
-                      <Text
+                         borderRadius: 25,
+                        // backgroundColor: '#fff',
+                        margin: 5,
+                       }}>
+                      <TouchableOpacity
                         style={{
-                          fontSize: 20,
-                          fontWeight: '900',
-                          color: '#fff',
+                           borderRadius: 25,
+                          backgroundColor: this.state.dark
+                            ? '#3d3e43'
+                            : '#c0bab8',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: 15,
+                        }}
+                        onPress={() => {
+                          this.setState({modelsipha: true});
                         }}>
-                        {this.state.data[2].name}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                  {/**names*****                                 */}
-                  <View
-                    style={{
-                      height: '27%',
-                      width: '45%',
-                      borderRadius: 25,
-                      // backgroundColor: '#fff',
-                      margin: 5,
-                      marginTop: 15,
-                    }}>
-                    <TouchableOpacity
+                        <Image
+                          source={this.state.data[2].img}
+                          style={{height: 75, width: 75}}
+                        />
+
+                       </TouchableOpacity>
+                    </View>
+                    {/**names*****                                 */}
+                    <View
                       style={{
-                        height: '95%',
-                        width: '98%',
-                        borderRadius: 25,
-                        backgroundColor: this.state.dark
-                          ? '#3d3e43'
-                          : '#c0bab8',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: 15,
-                      }}
-                      onPress={() => {
-                        this.setState({modelNames: true});
-                      }}>
-                      <Image
-                        source={this.state.data[3].img}
-                        style={{height: '90%', width: '60%'}}
-                      />
-
-                      <Text
+                         borderRadius: 25,
+                        // backgroundColor: '#fff',
+                        margin: 5,
+                       }}>
+                      <TouchableOpacity
                         style={{
-                          fontSize: 20,
-                          fontWeight: '900',
-                          color: '#fff',
+                           borderRadius: 25,
+                          backgroundColor: this.state.dark
+                            ? '#3d3e43'
+                            : '#c0bab8',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: 15,
+                        }}
+                        onPress={() => {
+                          this.setState({modelNames: true});
                         }}>
-                        {this.state.data[3].name}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                  {/**Athkar page *************************/}
-                  <View
-                    style={{
-                      height: '27%',
-                      width: '45%',
-                      borderRadius: 25,
-                      //backgroundColor: '#fff',
-                      margin: 5,
-                      marginTop: 15,
-                    }}>
-                    <TouchableOpacity
+                        <Image
+                          source={this.state.data[3].img}
+                          style={{height: 75, width: 75}}
+                        />
+
+                       </TouchableOpacity>
+                    </View>
+                    {/**Athkar page *************************/}
+                    <View
                       style={{
-                        height: '95%',
-                        width: '98%',
-                        borderRadius: 25,
-                        backgroundColor: this.state.dark
-                          ? '#3d3e43'
-                          : '#c0bab8',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: 15,
-                      }}
-                      onPress={() => {
-                        this.setState({modelAthkar: true});
-                      }}>
-                      <Image
-                        source={this.state.data[4].img}
-                        style={{height: '90%', width: '60%'}}
-                      />
-
-                      <Text
+                         borderRadius: 25,
+                        // backgroundColor: '#fff',
+                        margin: 5,
+                       }}>
+                      <TouchableOpacity
                         style={{
-                          fontSize: 20,
-                          fontWeight: '900',
-                          color: '#fff',
+                           borderRadius: 25,
+                          backgroundColor: this.state.dark
+                            ? '#3d3e43'
+                            : '#c0bab8',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: 15,
+                        }}
+                        onPress={() => {
+                          this.setState({modelAthkar: true});
                         }}>
-                        {this.state.data[4].name}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
-                  {/**ramadann** */}
-                  <View
-                    style={{
-                      height: '27%',
-                      width: '45%',
-                      borderRadius: 25,
-                      // backgroundColor: '#fff',
-                      margin: 5,
-                      marginTop: 15,
-                    }}>
-                    <TouchableOpacity
+                        <Image
+                          source={this.state.data[4].img}
+                          style={{height: 75, width: 75}}
+                        />
+
+                       </TouchableOpacity>
+                    </View>
+                    {/**ramadann** */}
+                    <View
                       style={{
-                        height: '95%',
-                        width: '98%',
-                        borderRadius: 25,
-                        backgroundColor: this.state.dark
-                          ? '#3d3e43'
-                          : '#c0bab8',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        padding: 15,
-                      }}
-                      onPress={() => {
-                        this.setState({modelRamadan: true});
-                      }}>
-                      <Image
-                        source={this.state.data[5].img}
-                        style={{height: '90%', width: '60%'}}
-                      />
-
-                      <Text
+                         borderRadius: 25,
+                        // backgroundColor: '#fff',
+                        margin: 5,
+                       }}>
+                      <TouchableOpacity
                         style={{
-                          fontSize: 20,
-                          fontWeight: '900',
-                          color: '#fff',
+                           borderRadius: 25,
+                          backgroundColor: this.state.dark
+                            ? '#3d3e43'
+                            : '#c0bab8',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          padding: 15,
+                        }}
+                        onPress={() => {
+                          this.setState({modelRamadan: true});
                         }}>
-                        {this.state.data[5].name}
-                      </Text>
-                    </TouchableOpacity>
-                  </View>
+                        <Image
+                          source={this.state.data[5].img}
+                          style={{height: 75, width: 75}}
+                        />
+
+                       </TouchableOpacity>
+                    </View>
+                  </ScrollView>
                 </View>
               </View>
+              {/* </ScrollView> */}
+              {/* </ScrollView> */}
             </ImageBackground>
             {/**مودل الدعاء */}
-
             <Modal
               onRequestClose={() => {
                 this.setState({modelDoua: false});
@@ -1068,9 +1347,20 @@ export default class Start_page extends React.Component {
                       <View>
                         {this.state.TextModalDoua ? (
                           <>
-                            <Text style={{fontSize: 20, color: '#000'}}>
-                              Error
-                            </Text>
+                            <Animatable.View
+                              animation="fadeIn"
+                              easing="ease-in-expo"
+                              style={{
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                              }}>
+                              <LottieView
+                                source={require('../Lottie/Animation - 1709843897980.json')} // Provide the path to your Lottie animation JSON file
+                                autoPlay
+                                loop
+                                style={{width: 200, height: 200}}
+                              />
+                            </Animatable.View>
                           </>
                         ) : (
                           <>
@@ -1148,6 +1438,7 @@ export default class Start_page extends React.Component {
                           </>
                         )}
                       </View>
+                      <View style={{height: 50}}></View>
                     </ScrollView>
                   </View>
                 </ImageBackground>
@@ -1233,7 +1524,20 @@ export default class Start_page extends React.Component {
                     <ScrollView>
                       <View>
                         {this.state.TextModalQuran ? (
-                          <Text>error</Text>
+                          <Animatable.View
+                            animation="fadeIn"
+                            easing="ease-in-expo"
+                            style={{
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}>
+                            <LottieView
+                              source={require('../Lottie/Animation - 1709843897980.json')} // Provide the path to your Lottie animation JSON file
+                              autoPlay
+                              loop
+                              style={{width: 200, height: 200}}
+                            />
+                          </Animatable.View>
                         ) : (
                           <>
                             {this.state.QuranPage.map((item, index) =>
@@ -1299,6 +1603,7 @@ export default class Start_page extends React.Component {
                           </>
                         )}
                       </View>
+                      <View style={{height: 100}}></View>
                     </ScrollView>
                   </View>
                 </ImageBackground>
@@ -1613,44 +1918,23 @@ export default class Start_page extends React.Component {
                   </View>
                   <View style={style.NamesView2}>
                     <ScrollView>
-                      <View
-                        style={{
-                          alignItems: 'center',
-                          alignSelf: 'center',
-                          justifyContent: 'space-between',
-                          flexDirection: 'row',
-                          width: '80%',
-                          paddingHorizontal: 10,
-                          //marginTop: 10,
-                          borderRadius: 20,
-                          backgroundColor: '#66605E',
-                        }}>
-                        <TextInput
-                          style={{
-                            //backgroundColor: '#100',
-                            // height: 50,
-                            borderRadius: 20,
-
-                            padding: 10,
-                            width: '90%',
-                            // marginTop: 10,
-                            fontSize: 20,
-                            color: '#fff',
-                          }}
-                          keyboardType="email-address"
-                          onChangeText={value => {
-                            this.makeSearchNames(value);
-                            this.setState({searchNames: value});
-                          }}
-                          value={this.state.searchNames}
-                        />
-
-                        <FontAwesome name="search" size={20} color={'#fff'} />
-                      </View>
                       <View>
                         {this.state.TextModalNames ? (
                           <>
-                            <Text>kalam</Text>
+                            <Animatable.View
+                              animation="fadeIn"
+                              easing="ease-in-expo"
+                              style={{
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                              }}>
+                              <LottieView
+                                source={require('../Lottie/Animation - 1709843897980.json')} // Provide the path to your Lottie animation JSON file
+                                autoPlay
+                                loop
+                                style={{width: 200, height: 200}}
+                              />
+                            </Animatable.View>
                           </>
                         ) : (
                           <>
@@ -1697,6 +1981,7 @@ export default class Start_page extends React.Component {
                           </>
                         )}
                       </View>
+                      <View style={{height: 50}}></View>
                     </ScrollView>
                   </View>
                 </ImageBackground>
@@ -1787,7 +2072,20 @@ export default class Start_page extends React.Component {
                       <View>
                         {this.state.TextModalDoua ? (
                           <>
-                            <Text>errorrr</Text>
+                            <Animatable.View
+                              animation="fadeIn"
+                              easing="ease-in-expo"
+                              style={{
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                              }}>
+                              <LottieView
+                                source={require('../Lottie/Animation - 1709843897980.json')} // Provide the path to your Lottie animation JSON file
+                                autoPlay
+                                loop
+                                style={{width: 200, height: 200}}
+                              />
+                            </Animatable.View>
                           </>
                         ) : (
                           <>
@@ -1865,6 +2163,7 @@ export default class Start_page extends React.Component {
                           </>
                         )}
                       </View>
+                      <View style={{height: 50}}></View>
                     </ScrollView>
                   </View>
                 </ImageBackground>
@@ -1887,7 +2186,7 @@ export default class Start_page extends React.Component {
                       justifyContent: 'space-around',
                       alignItems: 'center',
 
-                      width: '100%',
+                      // width: '100%',
 
                       paddingVertical: 10,
                     }}>
@@ -1895,17 +2194,13 @@ export default class Start_page extends React.Component {
                       onPress={() => {
                         this.setState({modelRamadan: false});
                       }}>
-                      <AntDesign
-                        name="left"
-                        size={30}
-                        color={this.state.dark ? '#000' : '#4f5051'}
-                      />
+                      <AntDesign name="left" size={30} color="#4f5051" />
                     </TouchableOpacity>
                     <Text
                       style={{
                         fontSize: 25,
                         fontWeight: 'bold',
-                        color: this.state.dark ? '#000' : '#4f5051',
+                        color: '#4f5051',
                       }}>
                       امساكية رَمَضانُ
                     </Text>
@@ -1916,10 +2211,11 @@ export default class Start_page extends React.Component {
 
                   <View
                     style={{
-                      justifyContent: 'flex-end',
-                      alignItems: 'center',
-                      height: 700,
-                      width: '100%',
+                      justifyContent: 'center',
+                      // alignItems: 'center',
+                      // height: 700,
+                      // width: '100%',
+                      // backgroundColor:"#000"
                     }}>
                     <View
                       style={{
@@ -1929,19 +2225,13 @@ export default class Start_page extends React.Component {
                         flexDirection: 'row',
                         width: '90%',
                         paddingHorizontal: 10,
-                        marginTop: 10,
+                        marginVertical: 10,
                         borderRadius: 20,
                         backgroundColor: '#66605E',
                       }}>
                       <TextInput
                         style={{
-                          // backgroundColor: '#100',
-                          // height: 50,
-                          borderRadius: 20,
-
-                          padding: 10,
                           width: '90%',
-                          // marginTop: 10,
                           fontSize: 20,
                           color: '#fff',
                         }}
@@ -1956,82 +2246,95 @@ export default class Start_page extends React.Component {
                       <FontAwesome name="search" size={20} color={'#fff'} />
                     </View>
                     <ScrollView>
-                      <View
-                        style={{
-                          height: '100%',
-                          width: '100%',
-
-                          padding: 10,
-                          // flexDirection: 'row',
-                          //flexWrap: 'wrap',
-                          justifyContent: 'space-between',
-
-                          borderRadius: 25,
-                          paddingVertical: 20,
-                        }}>
-                        {this.state.TextModalDoua ? (
-                          <>
-                            <Text>jj</Text>
-                          </>
-                        ) : (
-                          <>
-                            {this.state.ExplorBox.map((data, item) =>
-                              data.Bool ? (
-                                <>
-                                  <TouchableOpacity
+                      {this.state.TextModalDoua ? (
+                        <>
+                          <Animatable.View
+                            animation="fadeIn"
+                            easing="ease-in-expo"
+                            style={{
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}>
+                            <LottieView
+                              source={require('../Lottie/Animation - 1709843897980.json')} // Provide the path to your Lottie animation JSON file
+                              autoPlay
+                              loop
+                              style={{width: 200, height: 200}}
+                            />
+                          </Animatable.View>
+                        </>
+                      ) : (
+                        <>
+                          {this.state.ExplorBox.map((item, index) =>
+                            item.Bool ? (
+                              <>
+                                <TouchableOpacity
+                                  style={{
+                                    // height: '7%',
+                                    //  width: '48%',
+                                    width: '90%',
+                                    alignSelf: 'center',
+                                    paddingVertical: 15,
+                                    borderRadius: 20,
+                                    backgroundColor: '#c0bab8',
+                                    marginTop: 10,
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                    // flexDirection: 'row',
+                                  }}
+                                  onPress={() => {
+                                    this.ExplorBoxfun(index);
+                                    this.setState({modalVisible: true});
+                                  }}>
+                                  <Text
                                     style={{
-                                      // height: '7%',
-                                      //  width: '48%',
-                                      width: '100%',
-                                      paddingVertical: 15,
-                                      borderRadius: 20,
-                                      backgroundColor: '#c0bab8',
-                                      marginBottom: 10,
-                                      justifyContent: 'center',
-                                      alignItems: 'center',
-                                      flexDirection: 'row',
-                                    }}
-                                    onPress={() => {
-                                      this.ExplorBox();
+                                      fontSize: 22,
+                                      fontWeight: '700',
+                                      color: '#fff',
                                     }}>
-                                    <Text
-                                      style={{
-                                        fontSize: 22,
-                                        fontWeight: '700',
-                                        color: '#fff',
-                                      }}>
-                                      {data.ExplorText}
-                                    </Text>
-                                  </TouchableOpacity>
-                                  {data.chevron ? null : (
-                                    <Image
-                                      source={require('../imgs/Mosque.jpg')}
-                                      style={{height: 100, width: '100%'}}
-                                    />
-                                  )}
-                                </>
-                              ) : null,
-                            )}
-                          </>
-                        )}
-                      </View>
+                                    {item.ExplorText}
+                                  </Text>
+                                </TouchableOpacity>
+                                {item.Open ? null : (
+                                  <>
+                                    <Modal
+                                      animationType="slide"
+                                      transparent={true}
+                                      visible={this.state.modalVisible}
+                                      onRequestClose={() =>
+                                        this.setState({modalVisible: false})
+                                      }>
+                                      <View
+                                        style={{
+                                          alignItems: 'center',
+                                          justifyContent: 'center',
+                                          backgroundColor: '#0005',
+                                          flex: 1,
+                                        }}>
+                                        <Image
+                                          source={item.Img}
+                                          resizeMode="contain"
+                                          style={{
+                                            // borderRadius: 200,
+                                            width: '100%',
+                                            // height: "100%",
+                                          }}
+                                        />
+                                      </View>
+                                    </Modal>
+                                  </>
+                                )}
+                              </>
+                            ) : null,
+                          )}
+                        </>
+                      )}
                     </ScrollView>
+                    <View style={{height: '15%'}}></View>
                   </View>
                 </ImageBackground>
               </>
             </Modal>
-            {/**Time modallllllll 
-            <Modal
-              animationType="slide"
-              onRequestClose={() => {
-                this.setState({modelTime: false});
-              }}
-              visible={this.state.modelTime}
-              transparent={true}>
-              <ImageBackground
-                source={require('../backgrounds/ooo.jpg')}
-                style={{flex: 1}}></ImageBackground>
-            </Modal>*/}
           </>
         </Modal>
       </>
